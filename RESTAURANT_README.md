@@ -1,6 +1,6 @@
-## Restaurant Orders and Menu Analysis
+# Restaurant Orders and Menu Analysis
 
-# 📌 Project Overview
+## 📌 Project Overview
 
 This project explores a restaurant's menu and order data using SQL queries. The analysis is divided into three sections:
 
@@ -10,7 +10,7 @@ Order Details Analysis - Understanding order volume, frequency, and high-volume 
 
 Menu & Order Details Combination - Integrating menu data with order records to extract business insights.
 
-# 📂 Datasets Used
+## 📂 Datasets Used
 
 The project uses three tables:
 
@@ -20,7 +20,7 @@ order_details: Records details of customer orders.
 
 menu_items JOIN order_details: A combined dataset for deeper analysis.
 
-# 🔍 SQL Queries & Objectives
+## 🔍 SQL Queries & Objectives
 
 ### 1️⃣ Menu Items Analysis
 
@@ -146,7 +146,7 @@ LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
 WHERE order_id IN (440, 2075, 1957, 330, 2675)
 GROUP BY order_id, category;
 
-# 🏆 Key Insights
+## 🏆 Key Insights
 
 The restaurant offers a variety of dishes, with Italian cuisine making up a significant portion.
 
@@ -158,7 +158,7 @@ The most frequently ordered items belong to certain categories, which could help
 
 The highest-spending orders provide insights into customer preferences and potential upselling opportunities.
 
-# 📌 Next Steps
+## 📌 Next Steps
 
 Perform trend analysis on order frequency by date.
 
@@ -168,7 +168,7 @@ Suggest menu adjustments based on customer preferences.
 
 Optimize pricing strategy using the average price per category.
 
-# 📧 Contact & Feedback
+## 📧 Contact & Feedback
 
 If you have any suggestions or questions, feel free to reach out!
 
