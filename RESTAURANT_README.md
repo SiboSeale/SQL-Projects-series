@@ -38,29 +38,6 @@ Count dishes per category.
 
 Determine the average price per category.
 
-Key Queries:
-
--- View the menu_items table
-SELECT * FROM menu_items;
-
--- Count the number of items on the menu
-SELECT COUNT(*) FROM menu_items;
-
--- Find the least and most expensive items
-SELECT * FROM menu_items ORDER BY price DESC;
-
--- Count Italian dishes
-SELECT COUNT(*) FROM menu_items WHERE category='Italian';
-
--- Least and most expensive Italian dishes
-SELECT * FROM menu_items WHERE category='Italian' ORDER BY price DESC;
-
--- Count dishes per category
-SELECT category, COUNT(menu_item_id) AS num_dishes FROM menu_items GROUP BY category;
-
--- Average price per category
-SELECT category, AVG(price) AS avg_price FROM menu_items GROUP BY category;
-
 ### 2️⃣ Order Details Analysis
 
 Objectives:
@@ -75,31 +52,6 @@ Identify orders with the most items.
 
 Find orders exceeding 12 items.
 
-Key Queries:
-
--- View the order_details table
-SELECT * FROM order_details;
-
--- Find date range of orders
-SELECT MIN(order_date), MAX(order_date) FROM order_details;
-
--- Count total orders
-SELECT COUNT(DISTINCT order_id) FROM order_details;
-
--- Count total items ordered
-SELECT COUNT(*) FROM order_details;
-
--- Identify orders with the most items
-SELECT order_id, COUNT(item_id) AS num_items FROM order_details GROUP BY order_id ORDER BY num_items DESC;
-
--- Count orders with more than 12 items
-SELECT COUNT(*) FROM (
-    SELECT order_id, COUNT(item_id) AS num_items
-    FROM order_details
-    GROUP BY order_id
-    HAVING num_items > 12
-) AS num_orders;
-
 ### 3️⃣ Menu & Order Details Combination
 
 Objectives:
@@ -111,40 +63,6 @@ Identify the most and least ordered items.
 Find the highest-spending orders.
 
 Examine category details of top orders.
-
-Key Queries:
-
--- Join menu_items with order_details
-SELECT * FROM order_details od LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id;
-
--- Find the least and most ordered items
-SELECT item_name, category, COUNT(order_details_id) AS num_purchases
-FROM order_details od
-LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
-GROUP BY item_name, category
-ORDER BY num_purchases DESC;
-
--- Find the top 5 highest spending orders
-SELECT order_id, SUM(price) AS total_spend
-FROM order_details od
-LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
-GROUP BY order_id
-ORDER BY total_spend DESC
-LIMIT 5;
-
--- View category breakdown for the highest spend order (Order ID: 440)
-SELECT category, COUNT(item_id) AS num_items
-FROM order_details od
-LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
-WHERE order_id = 440
-GROUP BY category;
-
--- Analyze top 5 highest spending orders
-SELECT order_id, category, COUNT(item_id) AS num_items
-FROM order_details od
-LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
-WHERE order_id IN (440, 2075, 1957, 330, 2675)
-GROUP BY order_id, category;
 
 ## 🏆 Key Insights
 
