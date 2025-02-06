@@ -172,4 +172,4 @@ Optimize pricing strategy using the average price per category.
 
 If you have any suggestions or questions, feel free to reach out!
 
-# 📌 Author: Sibongile Seale
+📌 Author: Sibongile Seale
